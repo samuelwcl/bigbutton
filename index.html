@@ -39,39 +39,4 @@
 
     <div id="locationLink">
         <p>Click below to share the location:</p>
-        <a id="whatsappLink" href="#" target="_blank">Send via WhatsApp</a>
-        <a id="emailLink" href="#" target="_blank">Send via Email</a>
-    </div>
-
-    <script>
-        document.getElementById("shareLocationButton").addEventListener("click", function() {
-            // Get the user's current location using the browser's geolocation API
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-
-                    // Construct the location message
-                    const locationMessage = `Hello, I am sharing my current location. Latitude: ${latitude}, Longitude: ${longitude}. You can view it on Google Maps here: https://www.google.com/maps?q=${latitude},${longitude}`;
-
-                    // Set up WhatsApp and Email sharing links
-                    const whatsappLink = `https://wa.me/?text=${encodeURIComponent(locationMessage)}`;
-                    const emailLink = `mailto:?subject=My Location&body=${encodeURIComponent(locationMessage)}`;
-
-                    // Set the href attributes of the links dynamically
-                    document.getElementById("whatsappLink").href = whatsappLink;
-                    document.getElementById("emailLink").href = emailLink;
-
-                    // Show the sharing options
-                    document.getElementById("locationLink").style.display = 'block';
-                }, function(error) {
-                    alert("Unable to retrieve location. Please allow location access.");
-                });
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
-        });
-    </script>
-
-</body>
-</html>
+        <a id="whatsappLink" href="#" target="_blank">Send via WhatsApp</a
