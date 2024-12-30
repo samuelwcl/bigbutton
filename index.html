@@ -31,11 +31,21 @@
             display: block;
             margin-top: 10px;
         }
+
+        #loadingMessage {
+            display: none;
+            font-size: 18px;
+            color: #555;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
     <button id="shareLocationButton">Share Location</button>
+
+    <!-- Loading message while waiting for location -->
+    <div id="loadingMessage">Please wait... Retrieving your location...</div>
 
     <div id="locationLink">
         <p>Click below to share the location:</p>
@@ -45,9 +55,15 @@
 
     <script>
         document.getElementById("shareLocationButton").addEventListener("click", function() {
+            // Show the loading message while waiting for the location
+            document.getElementById("loadingMessage").style.display = 'block';
+
             // Get the user's current location using the browser's geolocation API
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
+                    // Hide the loading message once the location is retrieved
+                    document.getElementById("loadingMessage").style.display = 'none';
+
                     const latitude = position.coords.latitude;
                     const longitude = position.coords.longitude;
 
@@ -67,28 +83,4 @@
                     document.getElementById("emailLink").href = emailLink;
 
                     // Show the sharing options
-                    document.getElementById("locationLink").style.display = 'block';
-                }, function(error) {
-                    switch (error.code) {
-                        case error.PERMISSION_DENIED:
-                            alert("Location access denied. Please allow location access.");
-                            break;
-                        case error.POSITION_UNAVAILABLE:
-                            alert("Location information is unavailable.");
-                            break;
-                        case error.TIMEOUT:
-                            alert("Location request timed out. Try again.");
-                            break;
-                        case error.UNKNOWN_ERROR:
-                            alert("An unknown error occurred.");
-                            break;
-                    }
-                });
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
-        });
-    </script>
-
-</body>
-</html>
+                    docu
