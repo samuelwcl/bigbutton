@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Location</title>
+    <style>
+        #shareLocationButton {
+            padding: 20px 40px;
+            font-size: 24px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%; /* Full-width button */
+            max-width: 400px; /* Optional: to limit the button width */
+            border-radius: 8px; /* Rounded corners */
+            text-align: center;
+        }
+
+        #shareLocationButton:hover {
+            background-color: #0056b3;
+        }
+
+        #locationLink {
+            display: none; /* Initially hide the link */
+            margin-top: 20px;
+        }
+
+        #locationLink a {
+            display: block;
+            margin-top: 10px;
+        }
+
+        #loadingMessage {
+            display: none;
+            font-size: 18px;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="shareLocationButton">Share Location</button>
+
+    <!-- Loading message while waiting for location -->
+    <div id="loadingMessage">Please wait... Retrieving your location...</div>
+
+    <div id="locationLink">
+        <p>Click below to share the location:</p>
+        <a id="whatsappLink" href="#" target="_blank">Send via WhatsApp</a>
+        <a id="emailLink" href="#" target="_blank">Send via Email</a>
+    </div>
+
+    <script>
+        document.getElementById("shareLocationButton").addEventLis
