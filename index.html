@@ -83,4 +83,33 @@
                     document.getElementById("emailLink").href = emailLink;
 
                     // Show the sharing options
-                    docu
+                    document.getElementById("locationLink").style.display = 'block';
+                }, function(error) {
+                    // Hide the loading message if there is an error
+                    document.getElementById("loadingMessage").style.display = 'none';
+
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            alert("Location access denied. Please allow location access.");
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            alert("Location information is unavailable.");
+                            break;
+                        case error.TIMEOUT:
+                            alert("Location request timed out. Try again.");
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            alert("An unknown error occurred.");
+                            break;
+                    }
+                });
+            } else {
+                // Hide the loading message if geolocation is not supported
+                document.getElementById("loadingMessage").style.display = 'none';
+                alert("Geolocation is not supported by this browser.");
+            }
+        });
+    </script>
+
+</body>
+</html>
